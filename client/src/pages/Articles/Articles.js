@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import SaveBtn from "../../components/SaveBtn";
-import zBoard from "../../components/zBoard";
+import zboard from "../../components/zBoard";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -58,9 +58,9 @@ class Articles extends Component {
         return (
             <Container fluid>
                 <Row>
-                    <zBoard>
-                        <h1>NYT Article GEN</h1>
-                    </zBoard>
+
+                    <h1>NYT Article GEN</h1>
+
                     <Col size="">
 
                         <form>

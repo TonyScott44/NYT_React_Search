@@ -1,6 +1,6 @@
 import React from "react";
 
-const zBoard = ({ children }) => (
+const zboard = ({ children }) => (
     <div
         style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
         className="zboard"
@@ -9,4 +9,4 @@ const zBoard = ({ children }) => (
     </div>
 );
 
-export default zBoard;
+export default zboard;

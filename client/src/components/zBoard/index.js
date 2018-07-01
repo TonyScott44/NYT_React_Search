@@ -1,1 +1,1 @@
-export { default } from "./zBoard";
+export { zboard } from "./Zboard";

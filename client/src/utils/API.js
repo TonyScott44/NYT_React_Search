@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const $ = window.$;
+
 export default {
     // Gets all articles
     getArticles: function() {
@@ -16,5 +18,25 @@ export default {
     // Saves a article to the database
     saveArticle: function(articleData) {
         return axios.post("/api/articles", articleData);
-    }
+    },
+    getNew: function() {
+        var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        url += '?' + $.param({
+            'api-key': "a3d2784f51764ed6bce767b430c7a877"
+        });
+        $.ajax({
+            url: url,
+            method: 'GET',
+        }).done(function(result) {
+            console.log(result);
+        }).fail(function(err) {
+            throw err;
+        });
+    },
+
+
+
+
+
 };
+
