@@ -59,7 +59,7 @@ class Articles extends Component {
             <Container fluid>
                 <Row>
                     <zBoard>
-                        <h1>New York Times Article Generator</h1>
+                        <h1>NYT Article GEN</h1>
                     </zBoard>
                     <Col size="">
 
@@ -98,7 +98,7 @@ class Articles extends Component {
                             <List>
                                 {this.state.articles.map(article => (
                                     <ListItem key={article._id}>
-                                        <Link to={"/books/" + article._id}>
+                                        <Link to={"/articles/" + article._id}>
                                             <strong>
                                                 {article.title} by {article.author}
                                             </strong>
@@ -119,7 +119,7 @@ class Articles extends Component {
                             <List>
                                 {this.state.articles.map(article => (
                                     <ListItem key={article._id}>
-                                        <Link to={"/books/" + article._id}>
+                                        <Link to={"/articles/" + article._id}>
                                             <strong>
                                                 {article.title} by {article.author}
                                             </strong>
