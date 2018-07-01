@@ -19,10 +19,14 @@ export default {
     saveArticle: function(articleData) {
         return axios.post("/api/articles", articleData);
     },
-    getNew: function() {
+    getNew: function(event) {
+        console.log(event);
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         url += '?' + $.param({
-            'api-key': "a3d2784f51764ed6bce767b430c7a877"
+            'api-key': "a3d2784f51764ed6bce767b430c7a877",
+            'q': event.topic,
+            'begin_date': event.startYear,
+            'end_date': event.endYear
         });
         $.ajax({
             url: url,

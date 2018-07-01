@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import SaveBtn from "../../components/SaveBtn";
-import zboard from "../../components/zBoard";
+//import zboard from "../../components/zBoard";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
 class Articles extends Component {
     state = {
         articles: [],
-        title: "",
-        author: "",
-        synopsis: ""
+        topic: "",
+        startYear: "",
+        endYear: ""
     };
 
     componentDidMount() {
@@ -23,7 +23,7 @@ class Articles extends Component {
     loadArticles = () => {
         API.getArticles()
             .then(res =>
-                this.setState({ articles: res.data, title: "", author: "", synopsis: "" })
+                this.setState({ articles: res.data, title: "", date: "", url: "" })
             )
             .catch(err => console.log(err));
     };
@@ -43,11 +43,11 @@ class Articles extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.title && this.state.author) {
-            API.saveArticle({
-                title: this.state.title,
-                author: this.state.author,
-                synopsis: this.state.synopsis
+        if (this.state.topic) {
+            API.getNew({
+                topic: this.state.topic,
+                startYear: this.state.startYear,
+                endYear: this.state.endYear
             })
                 .then(res => this.loadArticles())
                 .catch(err => console.log(err));
@@ -77,14 +77,14 @@ class Articles extends Component {
                                 name="startYear"
                                 placeholder="Start Year"
                             />
-                            <TextArea
+                            <Input
                                 value={this.state.endYear}
                                 onChange={this.handleInputChange}
                                 name="endYear"
                                 placeholder="End Year"
                             />
                             <FormBtn
-                                disabled={!(this.state.topic && this.state.startYear && this.state.endYear)}
+                                disabled={!(this.state.topic)}
                                 onClick={this.handleFormSubmit}
                             >
                                 Search

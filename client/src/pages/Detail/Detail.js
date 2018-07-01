@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import zboard from "../../components/zBoard";
+//import zboard from "../../components/zBoard";
 import API from "../../utils/API";
 
 class Detail extends Component {
@@ -21,11 +21,9 @@ class Detail extends Component {
             <Container fluid>
                 <Row>
                     <Col size="md-12">
-                        <zboard>
                             <h1>
                                 {this.state.article.title} by {this.state.article.author}
                             </h1>
-                        </zboard>
                     </Col>
                 </Row>
                 <Row>
