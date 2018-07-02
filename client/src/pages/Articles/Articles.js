@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
+import Jumbotron from "../../components/Jumbotron";
 import SaveBtn from "../../components/SaveBtn";
-//import zboard from "../../components/zBoard";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -23,7 +23,7 @@ class Articles extends Component {
     loadArticles = () => {
         API.getArticles()
             .then(res =>
-                this.setState({ articles: res.data, title: "", date: "", url: "" })
+                this.setState({ articles: res.data, topic:"" , startYear:"", endYear:""})
             )
             .catch(err => console.log(err));
     };
@@ -49,20 +49,21 @@ class Articles extends Component {
                 startYear: this.state.startYear,
                 endYear: this.state.endYear
             })
+
                 .then(res => this.loadArticles())
                 .catch(err => console.log(err));
         }
+
     };
 
     render() {
         return (
             <Container fluid>
                 <Row>
-
-                    <h1>NYT Article GEN</h1>
-
-                    <Col size="">
-
+                    <Col size= "m-12 lg-12">
+                    <Jumbotron>
+                        <h1>NYT Article GEN</h1>
+                    </Jumbotron>
                         <form>
                             <h2>Search</h2>
                             <Input
@@ -92,7 +93,7 @@ class Articles extends Component {
                         </form>
                     </Col>
 
-                    <Col size="">
+                    <Col size="m-12 lg-12">
                         <h2>Results</h2>
                         {this.state.articles.length ? (
                             <List>
@@ -112,8 +113,7 @@ class Articles extends Component {
                         )}
                     </Col>
 
-
-                    <Col size="">
+                    <Col size="m-12 lg-12">
                         <h2>Saved Articles</h2>
                         {this.state.articles.length ? (
                             <List>
@@ -124,7 +124,7 @@ class Articles extends Component {
                                                 {article.title} by {article.author}
                                             </strong>
                                         </Link>
-                                        <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+                                        <DeleteBtn onClick={() => this.saveArticle(article._id)} />
                                     </ListItem>
                                 ))}
                             </List>

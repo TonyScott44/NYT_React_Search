@@ -33,9 +33,11 @@ export default {
             method: 'GET',
         }).done(function(result) {
             console.log(result);
+            return axios.get("/");
         }).fail(function(err) {
             throw err;
         });
+
     },
 
 
